@@ -9,6 +9,21 @@ using UnityEditor;
 
 public class PlaystateManager : MonoBehaviour
 {
+    #region singleton
+    public static PlaystateManager Instance;
+    private void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+        else
+            Destroy(gameObject);
+    }
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
+    }
+    #endregion
     public RectAnimation EnterAnimation = default;
     public RectAnimation ExitAnimation = default;
     public EnumStates CurrentState = default;
@@ -68,14 +83,11 @@ public class PlaystateManager : MonoBehaviour
     #endregion
     public void SetState(EnumStates state)
     {
-        if (CurrentState != state)
-        {
-            StartCoroutine(Closing(CurrentState, true));
-            GetState().StateExit_Start?.Invoke();
-            CurrentState = state;
-        }
+        StartCoroutine(Closing(CurrentState, true));
+        GetState().StateExit_Start?.Invoke();
+        CurrentState = state;
         GetState().StateEnter_Start?.Invoke();
-        StartCoroutine(Opening(CurrentState,true));
+        StartCoroutine(Opening(CurrentState, true));
     }
     public void ChangeState(EnumStates newState)
     {
@@ -95,10 +107,10 @@ public class PlaystateManager : MonoBehaviour
     IEnumerator Opening(EnumStates state, bool instant = false)
     {
         RectTransform rect = GetState(state).View.GetComponent<RectTransform>();
+        rect.gameObject.SetActive(true);
         if (!instant)
         {
             yield return new WaitForSeconds(EnterAnimation.Delay);
-            rect.gameObject.SetActive(true);
             if (EnterAnimation.Move || EnterAnimation.Scale || EnterAnimation.Rotate)
             {
                 Vector2 endPos = EnterAnimation.CustomPosition ? EnterAnimation.EndPosition : FindCanvasEdge(EnterAnimation.EndDir);

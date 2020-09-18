@@ -7,4 +7,5 @@ public enum EnumStates
 	Leaderboard,
 	Reward,
 	Name,
+	Pause,
 }
