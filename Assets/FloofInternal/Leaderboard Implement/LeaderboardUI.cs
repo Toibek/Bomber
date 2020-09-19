@@ -46,8 +46,28 @@ public class LeaderboardUI : MonoBehaviour
 
         SelectView = Instantiate(SelectedStyle.Prefab_Select, canvas.transform).GetComponent<RectTransform>();
         SelectView.gameObject.SetActive(false);
-
         LBM = LeaderboardManager.Instance;
+    }
+    public void AddPlaystates()
+    {
+#if FLOOF_PLAYSTATE
+        if (!Application.isPlaying)
+        {
+            Debug.Log("Setting Playstate");
+            PlaystateManager psm = GetComponent<PlaystateManager>();
+            LeaderboardManager lbm = GetComponent<LeaderboardManager>();
+            if (!psm.StateExists("Leaderboard"))
+            {
+                PlayState state = psm.AddPlaystate("Leaderboard");
+                state.View = LeaderboardView.gameObject;
+            }
+            if (lbm.Leaderboards.Count > 1 && !psm.StateExists("Selection"))
+            {
+                PlayState state = psm.AddPlaystate("Selection");
+                state.View = SelectView.gameObject;
+            }
+        }
+#endif
     }
     /// <summary>
     /// Opens the leaderboard select menu
@@ -190,6 +210,7 @@ public class LeaderboardUI : MonoBehaviour
         }
         movingRoutine = null;
     }
+    void LoadLeaderboard() => LoadLeaderboard(LBM.Leaderboards[0]);
     /// <summary>
     /// Loads the leaderboard ui to the specified board
     /// </summary>
@@ -564,6 +585,12 @@ public class LeaderboardUIEditor : Editor
                 }
                 EditorGUILayout.EndFoldoutHeaderGroup();
             }
+            #if FLOOF_PLAYSTATE
+            if (GUILayout.Button("Add Playstates"))
+            {
+                scr.AddPlaystates();
+            }
+            #endif
             if (GUI.changed)
                 EditorUtility.SetDirty(scr);
         }

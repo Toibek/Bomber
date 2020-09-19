@@ -1,11 +1,10 @@
 public enum EnumStates
 {
+	Name,
 	MainMenu,
 	PlayMode,
+	Pause,
 	Death,
 	Ad,
-	Leaderboard,
 	Reward,
-	Name,
-	Pause,
 }

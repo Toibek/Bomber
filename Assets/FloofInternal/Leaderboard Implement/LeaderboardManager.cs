@@ -8,6 +8,7 @@ using UnityEngine;
 using Firebase;
 using Firebase.Unity.Editor;
 using Firebase.Database;
+using System.Linq;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -27,16 +28,15 @@ public class LeaderboardManager : MonoBehaviour
 
     delegate void EmptyDelegate();
 
-
-    #region LBInit && Singleton && DDOL
+#region LBInit && Singleton && DDOL
     public static LeaderboardManager Instance;
     private void Awake()
     {
-
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            if(Application.isPlaying)
+                DontDestroyOnLoad(gameObject);
 
             //This area serves to prepare the connections with the database and fetch from it.
             //Loads up your last sent entry
@@ -60,7 +60,7 @@ public class LeaderboardManager : MonoBehaviour
         if (Instance == this)
             Instance = null;
     }
-    #endregion
+#endregion
     /// <summary>
     /// Adds a new leaderboard to the leaderboards list
     /// </summary>
@@ -435,14 +435,14 @@ public class LeaderboardGroup : object
         }
         if (EnableWeekly)
         {
-            #region Weekcheck
+#region Weekcheck
             CultureInfo myCI = new CultureInfo("en-US");
             Calendar myCal = myCI.Calendar;
             DateTime lastDay = new System.DateTime(DateTime.Now.Year, 12, 31);
             CalendarWeekRule myCWR = myCI.DateTimeFormat.CalendarWeekRule;
             DayOfWeek myFirstDOW = DayOfWeek.Monday;
             int week = myCal.GetWeekOfYear(DateTime.Now, myCWR, myFirstDOW);
-            #endregion
+#endregion
             string weekId = baseRef + "2,Weekly/" + DateTime.Now.Year + "," + week.ToString();
             Weekly.DbRef = FirebaseDatabase.DefaultInstance.GetReference(weekId);
             Weekly.AddChild();
@@ -619,6 +619,17 @@ public class CustomLeaderboardInspector: Editor
     private void OnEnable()
     {
         scr = (LeaderboardManager)target;
+
+        string DefineName = "FLOOF_LEADERBOARD";
+        string s = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
+        List<string> sarr = new List<string>();
+        sarr.AddRange(s.Split(';'));
+        if (!sarr.Contains(DefineName))
+        {
+            Debug.Log("Setting " + DefineName + " as a define symbol");
+            s += ";" + DefineName;
+            PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, s);
+        }
     }
     public override void OnInspectorGUI()
     {

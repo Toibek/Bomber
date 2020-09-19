@@ -4,11 +4,14 @@ using UnityEngine;
 public class EnableOnlyDuringState : MonoBehaviour
 {
     public bool HideOnStart = false;
-    public EnumStates StateForEnable = default;
+    public EnumStates[] StateForEnable = default;
     private void Start()
     {
-        PlaystateManager.Instance.GetState(StateForEnable).StateEnter_Start += Show;
-        PlaystateManager.Instance.GetState(StateForEnable).StateExit_Start += Hide;
+        for (int i = 0; i < StateForEnable.Length; i++)
+        {
+        PlaystateManager.Instance.GetState(StateForEnable[i]).StateEnter_Start += Show;
+        PlaystateManager.Instance.GetState(StateForEnable[i]).StateExit_Start += Hide;
+        }
         if (HideOnStart)
             gameObject.SetActive(false);
     }
@@ -16,7 +19,13 @@ public class EnableOnlyDuringState : MonoBehaviour
     void Hide() => gameObject.SetActive(false);
     private void OnDestroy()
     {
-        PlaystateManager.Instance.GetState(StateForEnable).StateEnter_Start -= Show;
-        PlaystateManager.Instance.GetState(StateForEnable).StateExit_Start -= Hide;
+        if (PlaystateManager.Instance != null)
+        {
+            for (int i = 0; i < StateForEnable.Length; i++)
+            {
+            PlaystateManager.Instance.GetState(StateForEnable[i]).StateEnter_Start -= Show;
+            PlaystateManager.Instance.GetState(StateForEnable[i]).StateExit_Start -= Hide;
+            }
+        }
     }
 }

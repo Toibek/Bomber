@@ -34,53 +34,25 @@ public class PlaystateManager : MonoBehaviour
     private void Start()
     {
         Canvas = GameObject.Find("Canvas");
-        for (int i = 0; i < States.Count; i++)
+
+        if (Application.isPlaying)
         {
-            if (States[i].View.scene.rootCount != 0)
+            for (int i = 0; i < States.Count; i++)
             {
-                States[i].View.SetActive(false);
+                if (States[i].View != null && States[i].View.scene.rootCount != 0)
+                {
+                    States[i].View.SetActive(false);
+                }
+                else if (States[i].View != null)
+                {
+                    States[i].View = Instantiate(States[i].View, Canvas.transform);
+                    States[i].View.SetActive(false);
+                }
             }
-            else
-            {
-                States[i].View = Instantiate(States[i].View, Canvas.transform);
-                States[i].View.SetActive(false);
-            }
+            SetState(CurrentState);
         }
-        SetState(CurrentState);
-    }
-    public PlayState GetState() => GetState(CurrentState);
-    public PlayState GetState(EnumStates state)
-    {
-        for (int i = 0; i < States.Count; i++)
-        {
-            if (States[i].Name == state.ToString())
-                return States[i];
-        }
-        Debug.LogError("State Dosen't exist");
-        return null;
     }
 
-    #region StateHandeling
-    public void AddPlaystate(string stateName)
-    {
-        States.Add(new PlayState(stateName));
-        generateStateEnum();
-    }
-    public void RemovePlaystate(EnumStates stateToRemove)
-    {
-        States.Remove(GetState(stateToRemove));
-        generateStateEnum();
-    }
-    void generateStateEnum()
-    {
-        #if UNITY_EDITOR
-        string[] stateNames = new string[States.Count];
-        for (int i = 0; i < States.Count; i++)
-            stateNames[i] = States[i].Name;
-        EnumGenerator.Generate("EnumStates", stateNames);
-        #endif
-    }
-    #endregion
     public void SetState(EnumStates state)
     {
         StartCoroutine(Closing(CurrentState, true));
@@ -197,35 +169,84 @@ public class PlaystateManager : MonoBehaviour
         rect.gameObject.SetActive(false);
         GetState(state).StateExit_End?.Invoke();
     }
-    Vector2 FindCanvasEdge(direction dir)
+    Vector2 FindCanvasEdge(Direction dir)
     {
         float x = Canvas.GetComponent<RectTransform>().sizeDelta.x;
         float y = Canvas.GetComponent<RectTransform>().sizeDelta.y;
         switch (dir)
         {
-            case direction.Center:
+            case Direction.Center:
                 return Vector2.zero;
-            case direction.Up:
+            case Direction.Up:
                 return new Vector2(0, y);
-            case direction.UpLeft:
+            case Direction.UpLeft:
                 return new Vector2(-x, y);
-            case direction.UpRight:
+            case Direction.UpRight:
                 return new Vector2(x, y);
-            case direction.Left:
+            case Direction.Left:
                 return new Vector2(-x, 0);
-            case direction.Right:
+            case Direction.Right:
                 return new Vector2(x, 0);
-            case direction.Down:
+            case Direction.Down:
                 return new Vector2(0, -y);
-            case direction.DownLeft:
+            case Direction.DownLeft:
                 return new Vector2(-x, -y);
-            case direction.DownRight:
+            case Direction.DownRight:
                 return new Vector2(x, -y);
             default: 
                 return Vector3.zero;
         }
     }
 
+
+    public PlayState GetState() => GetState(CurrentState);
+    public PlayState GetState(string state)
+    {
+        for (int i = 0; i < States.Count; i++)
+            if (States[i].Name == state)
+                return States[i];
+        Debug.LogError("State Dosen't exist: " + state);
+        return null;
+    }
+    public PlayState GetState(EnumStates state)
+    {
+        for (int i = 0; i < States.Count; i++)
+        {
+            if (States[i].Name == state.ToString())
+                return States[i];
+        }
+        Debug.LogError("State Dosen't exist: " + state.ToString());
+        return null;
+    }
+    public bool StateExists(string state)
+    {
+        for (int i = 0; i < States.Count; i++)
+            if (States[i].Name == state)
+                return true;
+
+        return false;
+    }
+    public PlayState AddPlaystate(string stateName)
+    {
+        PlayState created = new PlayState(stateName);
+        States.Add(created);
+        generateStateEnum();
+        return created;
+    }
+    public void RemovePlaystate(EnumStates stateToRemove)
+    {
+        States.Remove(GetState(stateToRemove));
+        generateStateEnum();
+    }
+    void generateStateEnum()
+    {
+        #if UNITY_EDITOR
+        string[] stateNames = new string[States.Count];
+        for (int i = 0; i < States.Count; i++)
+            stateNames[i] = States[i].Name;
+        EnumGenerator.Generate("EnumStates", stateNames);
+        #endif
+    }
 }
 [System.Serializable]
 public class RectAnimation : object
@@ -234,8 +255,8 @@ public class RectAnimation : object
     public float Time = 1f;
     [Space]
     public bool Move = default;
-    public direction StartDir = default;
-    public direction EndDir = default;
+    public Direction StartDir = default;
+    public Direction EndDir = default;
     public bool CustomPosition = default;
     public Vector2 StartPosition = new Vector2(250, 0);
     public Vector2 EndPosition = Vector2.zero;
@@ -271,7 +292,7 @@ public class PlayState : object
     }
 }
 
-public enum direction
+public enum Direction
 {
     Center,
     Up,
@@ -295,6 +316,17 @@ public class PlayStatesEditor : Editor
     private void OnEnable()
     {
         scr = (PlaystateManager)target;
+
+        string DefineName = "FLOOF_PLAYSTATE";
+        string s = PlayerSettings.GetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android);
+        List<string> sarr = new List<string>();
+        sarr.AddRange(s.Split(';'));
+        if (!sarr.Contains(DefineName))
+        {
+            Debug.Log("Setting " + DefineName + " as a define symbol");
+            s += ";" + DefineName;
+            PlayerSettings.SetScriptingDefineSymbolsForGroup(BuildTargetGroup.Android, s);
+        }
     }
     public override void OnInspectorGUI()
     {
@@ -320,6 +352,13 @@ public class PlayStatesEditor : Editor
             scr.RemovePlaystate(stateToRemove);
         }
         EditorGUILayout.EndHorizontal();
+        for (int i = 0; i < scr.States.Count; i++)
+        {
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField(scr.States[i].Name);
+            scr.States[i].View = (GameObject)EditorGUILayout.ObjectField(scr.States[i].View, typeof(GameObject), true);
+            EditorGUILayout.EndHorizontal();
+        }
         base.OnInspectorGUI();
     }
 }
