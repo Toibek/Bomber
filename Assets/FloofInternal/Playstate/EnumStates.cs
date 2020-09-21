@@ -7,4 +7,5 @@ public enum EnumStates
 	Death,
 	Ad,
 	Reward,
+	Leaderboard,
 }

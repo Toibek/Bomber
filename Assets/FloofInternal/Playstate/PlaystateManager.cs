@@ -27,6 +27,7 @@ public class PlaystateManager : MonoBehaviour
     public RectAnimation EnterAnimation = default;
     public RectAnimation ExitAnimation = default;
     public EnumStates CurrentState = default;
+    public List<EnumStates> LastStates = new List<EnumStates>();
     public List<PlayState> States = new List<PlayState>();
 
     GameObject Canvas;
@@ -57,16 +58,29 @@ public class PlaystateManager : MonoBehaviour
     {
         StartCoroutine(Closing(CurrentState, true));
         GetState().StateExit_Start?.Invoke();
+        LastStates.Add(CurrentState);
         CurrentState = state;
         GetState().StateEnter_Start?.Invoke();
         StartCoroutine(Opening(CurrentState, true));
     }
+    public void Back(bool set = false)
+    {
+        EnumStates state = LastStates[LastStates.Count - 1];
+        if (set)
+            SetState(state);
+        else
+            ChangeState(state);
+        LastStates.Remove(state);
+
+    }
+    public void ChangeState(string newState) => ChangeState((EnumStates)System.Enum.Parse(typeof(EnumStates),newState));
     public void ChangeState(EnumStates newState)
     {
         if (CurrentState != newState)
         {
             StartCoroutine(Closing(CurrentState));
             GetState().StateExit_Start?.Invoke();
+            LastStates.Add(CurrentState);
             CurrentState = newState;
             GetState().StateEnter_Start?.Invoke();
             StartCoroutine(Opening(CurrentState));
@@ -230,6 +244,9 @@ public class PlaystateManager : MonoBehaviour
     {
         PlayState created = new PlayState(stateName);
         States.Add(created);
+#if UNITY_EDITOR
+        EditorUtility.SetDirty(this);
+#endif
         generateStateEnum();
         return created;
     }

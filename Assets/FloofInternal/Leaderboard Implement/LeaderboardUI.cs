@@ -30,7 +30,10 @@ public class LeaderboardUI : MonoBehaviour
 
     ActiveBoard activeLeaderboard = ActiveBoard.All;
 
+#if !FLOOF_PLAYSTATE
     Coroutine movingRoutine;
+#endif
+
     private void Start()
     {
         GameObject canvas = GameObject.Find("Canvas");
@@ -47,6 +50,24 @@ public class LeaderboardUI : MonoBehaviour
         SelectView = Instantiate(SelectedStyle.Prefab_Select, canvas.transform).GetComponent<RectTransform>();
         SelectView.gameObject.SetActive(false);
         LBM = LeaderboardManager.Instance;
+#if FLOOF_PLAYSTATE
+        if (PlaystateManager.Instance.StateExists("Leaderboard")) 
+        {
+            PlayState leaderState = PlaystateManager.Instance.GetState("Leaderboard");
+            leaderState.View = LeaderboardView.gameObject;
+            if(LBM.Leaderboards.Count < 2)
+                leaderState.StateEnter_Start = LoadLeaderboard;
+
+            //leaderState.StateExit_Start;
+        }
+        if (PlaystateManager.Instance.StateExists("Selection"))
+        {
+            PlayState selectState = PlaystateManager.Instance.GetState("Selection");
+            selectState.View = SelectView.gameObject;
+            selectState.StateEnter_Start = LoadSelect;
+            //selectState.StateExit_Start;
+        }
+#endif
     }
     public void AddPlaystates()
     {
@@ -59,12 +80,10 @@ public class LeaderboardUI : MonoBehaviour
             if (!psm.StateExists("Leaderboard"))
             {
                 PlayState state = psm.AddPlaystate("Leaderboard");
-                state.View = LeaderboardView.gameObject;
             }
             if (lbm.Leaderboards.Count > 1 && !psm.StateExists("Selection"))
             {
                 PlayState state = psm.AddPlaystate("Selection");
-                state.View = SelectView.gameObject;
             }
         }
 #endif
@@ -74,6 +93,10 @@ public class LeaderboardUI : MonoBehaviour
     /// </summary>
     public void OpenSelect()
     {
+#if FLOOF_PLAYSTATE
+        LoadSelect();
+        PlaystateManager.Instance.ChangeState("Selection");
+#else
         if (movingRoutine == null)
         {
             LoadSelect();
@@ -82,6 +105,7 @@ public class LeaderboardUI : MonoBehaviour
             else
                 movingRoutine = StartCoroutine(Opening(SelectView));
         }
+#endif
     }
     /// <summary>
     /// Opens the primary leaderboard or the select menu if there's more than one leaderboard
@@ -104,6 +128,10 @@ public class LeaderboardUI : MonoBehaviour
     /// <param name="Board"></param>
     public void OpenLeaderboard(LeaderboardGroup Board)
     {
+#if FLOOF_PLAYSTATE
+        LoadLeaderboard(Board);
+        PlaystateManager.Instance.ChangeState("Leaderboard");
+#else
         if (movingRoutine == null)
         {
             LoadLeaderboard(Board);
@@ -112,17 +140,23 @@ public class LeaderboardUI : MonoBehaviour
             else
                 movingRoutine = StartCoroutine(Opening(LeaderboardView));
         }
+#endif
     }
     /// <summary>
     /// Closes the open leaderboard
     /// </summary>
     public void CloseLeaderboard()
     {
+#if FLOOF_PLAYSTATE
+        PlaystateManager.Instance.Back();
+#else
         if (movingRoutine == null)
         {
             movingRoutine = StartCoroutine(ClosingAll());
         }
+#endif
     }
+#if !FLOOF_PLAYSTATE
     /// <summary>
     /// Start as a coroutine to smoothly open a rect in accordance with the selectedStyle
     /// </summary>
@@ -210,6 +244,7 @@ public class LeaderboardUI : MonoBehaviour
         }
         movingRoutine = null;
     }
+#endif
     void LoadLeaderboard() => LoadLeaderboard(LBM.Leaderboards[0]);
     /// <summary>
     /// Loads the leaderboard ui to the specified board
@@ -585,12 +620,12 @@ public class LeaderboardUIEditor : Editor
                 }
                 EditorGUILayout.EndFoldoutHeaderGroup();
             }
-            #if FLOOF_PLAYSTATE
+#if FLOOF_PLAYSTATE
             if (GUILayout.Button("Add Playstates"))
             {
                 scr.AddPlaystates();
             }
-            #endif
+#endif
             if (GUI.changed)
                 EditorUtility.SetDirty(scr);
         }

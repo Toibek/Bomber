@@ -1,7 +1,7 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
 using System.IO;
-public class EnumGenerator
+public static class EnumGenerator
 {
     public static void Generate(string name, string[] entries)
     {
