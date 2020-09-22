@@ -11,7 +11,11 @@ public class HousePiece : MonoBehaviour
         if (bottomFloor)
             DestroyPiece();
         else
-            GetComponent<SpriteRenderer>().sprite = BrokenPiece[Random.Range(0,BrokenPiece.Length)];
+        {
+            GetComponent<SpriteRenderer>().sprite = BrokenPiece[Random.Range(0, BrokenPiece.Length)];
+            GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.4f);
+            GetComponent<BoxCollider2D>().size = new Vector2(0.94f, 0.2f);
+        }
     }
     public void DestroyPiece()
     {

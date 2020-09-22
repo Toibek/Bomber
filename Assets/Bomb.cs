@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     [SerializeField] int Health = default;
+    [SerializeField] GameObject prefab_Particles;
     int health;
     private void Start()
     {
@@ -17,6 +18,11 @@ public class Bomb : MonoBehaviour
             if (health == 0)
             {
                 collision.GetComponent<HousePiece>().BreakPiece();
+                if(collision.GetComponent<HousePiece>().bottomFloor)
+                    Instantiate(prefab_Particles, transform.position - new Vector3(0, 0), Quaternion.identity);
+                else
+                    Instantiate(prefab_Particles, transform.position - new Vector3(0,1), Quaternion.identity);
+                GameManager.Instance.BombUsed(false);
                 Destroy(gameObject);
             }
             else
@@ -28,10 +34,8 @@ public class Bomb : MonoBehaviour
         if (collision.GetComponent<DestroyableGround>())
         {
             collision.GetComponent<DestroyableGround>().DealDamage();
-            if(health == Health)
-            {
-                GameManager.Instance.MissBuildings();
-            }
+            GameManager.Instance.BombUsed(health == Health);
+            Instantiate(prefab_Particles, transform.position - new Vector3(0, 0), Quaternion.identity);
             Destroy(gameObject);
         }
     }
