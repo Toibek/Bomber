@@ -5,13 +5,15 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] int score;
-    [SerializeField] int multiplier;
+    [SerializeField] int score = default;
+    [SerializeField] int multiplier = default;
+    [SerializeField] int screens = default;
     [Header("Plane Settings:")]
     [SerializeField] GameObject prefab_Airplane = default;
-    [SerializeField] GameObject prefab_Bomb = default;
-    [SerializeField] float StartHeight;
-    [SerializeField] float ScoreToSpeedMultiplier;
+    //[SerializeField] GameObject prefab_Bomb = default;
+    [SerializeField] float StartHeight = default;
+    [SerializeField] float ScoreToSpeedMultiplier = default;
+    [SerializeField] float ScreenToSpeedMultiplier = default;
     [Header("House Settings:")]
     [SerializeField] float buildspeed = default;
     [SerializeField] int startY = default;
@@ -26,15 +28,17 @@ public class GameManager : MonoBehaviour
     List<GameObject> HouseParts = new List<GameObject>();
     List<int> HouseHeights = new List<int>();
     [Header("Score Settings:")]
-    [SerializeField] int BaseScore;
-    [SerializeField] float multiplierMissEffect;
+    [SerializeField] int BaseScore = default;
+    [SerializeField] float multiplierMissEffect = default;
     [Header("UI:")]
-    [SerializeField] RectTransform[] ScoreText;
+    [SerializeField] RectTransform[] ScoreText = default;
 
-    public static GameManager Instance;
     GameObject activeAirplane;
     bool skip;
     bool revived;
+
+    #region Singleton
+    public static GameManager Instance;
     private void Awake()
     {
         if (Instance == null)
@@ -47,9 +51,15 @@ public class GameManager : MonoBehaviour
         if (Instance == this)
             Instance = null;
     }
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
+        if (LeaderboardManager.Instance.playerEntry.Name == "")
+            PlaystateManager.Instance.SetState(EnumStates.Name);
+        else
+            PlaystateManager.Instance.SetState(EnumStates.MainMenu);
         PlaystateManager.Instance.GetState(EnumStates.PlayMode).StateEnter_Start += StartGame;
         PlaystateManager.Instance.GetState(EnumStates.PlayMode).StateExit_End += ClearGame;
     }
@@ -58,14 +68,12 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && !skip)
             skip = true;
-        //else if (Input.GetKeyDown(KeyCode.Mouse0) && PlaystateManager.Instance.CurrentState == EnumStates.PlayMode)
-        //{
-        //    Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //    Instantiate(prefab_Bomb,new Vector3(Mathf.Round(pos.x),pos.y) , Quaternion.identity);
-        //}
+        if (Input.GetKeyDown(KeyCode.F1))
+            PlayerPrefs.DeleteAll();
     }
     public void StartGame()
     {
+        screens++;
         StartCoroutine(StartGameRoutine());
     }
     IEnumerator StartGameRoutine()
@@ -133,6 +141,7 @@ public class GameManager : MonoBehaviour
         skip = true;
 
         GameObject view = PlaystateManager.Instance.GetState(EnumStates.PlayMode).View;
+        GameObject plane = Instantiate(prefab_Airplane, new Vector3(0, StartHeight), Quaternion.identity);
         for (int i = 0; i < 3; i++)
         {
             view.transform.GetChild(1).gameObject.SetActive(true);
@@ -140,8 +149,7 @@ public class GameManager : MonoBehaviour
             view.transform.GetChild(1).gameObject.SetActive(false);
             yield return new WaitForSeconds(0.2f);
         }
-        GameObject plane = Instantiate(prefab_Airplane, new Vector3(Camera.main.ScreenToWorldPoint(Vector3.zero).x-1, StartHeight), Quaternion.identity);
-        plane.GetComponent<Airplane>().Speed = 2+(score * ScoreToSpeedMultiplier);
+        plane.GetComponent<Airplane>().Speed = 2+(score * ScoreToSpeedMultiplier) + (screens*ScreenToSpeedMultiplier);
 
         plane.GetComponent<Airplane>().StartAirplane();
         activeAirplane = plane;
@@ -187,20 +195,25 @@ public class GameManager : MonoBehaviour
     {
         if (!revived)
         {
-            revived = true;
             PlaystateManager.Instance.ChangeState(EnumStates.Reward);
+            revived = true;
         }
         else
         {
+            HandleDeath();
+            PlaystateManager.Instance.GetState(EnumStates.Ad).View.GetComponent<Ad>().SetState(EnumStates.Death);
             PlaystateManager.Instance.ChangeState(EnumStates.Ad);
         }
     }
     public void HandleDeath()
     {
         LeaderboardEntry entry = LeaderboardManager.Instance.playerEntry;
+        revived = false;
         entry.Score = score;
         LeaderboardManager.Instance.WriteToLeaderboard(entry);
         score = 0;
+        screens = 0;
+        multiplier = 1;
     }
 
 

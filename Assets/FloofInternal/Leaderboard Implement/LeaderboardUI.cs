@@ -148,7 +148,7 @@ public class LeaderboardUI : MonoBehaviour
     public void CloseLeaderboard()
     {
 #if FLOOF_PLAYSTATE
-        PlaystateManager.Instance.Back();
+        PlaystateManager.Instance.ChangeState(EnumStates.MainMenu);
 #else
         if (movingRoutine == null)
         {

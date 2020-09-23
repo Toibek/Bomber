@@ -5,6 +5,7 @@ using UnityEngine;
 public class Clouds : MonoBehaviour
 {
     [SerializeField] int cloudAmount = default;
+    [SerializeField] Vector2 cloudHeight = default;
     [SerializeField] Vector2 cloudSpeed = default;
     [SerializeField] Sprite[] cloudSprites = default;
     List<float> speeds = new List<float>();
@@ -39,10 +40,10 @@ public class Clouds : MonoBehaviour
         if (anywhere) 
         {
             float width = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.scaledPixelWidth, 0,0)).x+1;
-            go.transform.position = new Vector3(Random.Range(-width, width), Random.Range(0f, 5f), 0);
+            go.transform.position = new Vector3(Random.Range(-width, width), Random.Range(cloudHeight.x, cloudHeight.y), 0);
         }
         else
-            go.transform.position = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.scaledPixelWidth, 0, 0)).x + 1, Random.Range(0, 6));
+            go.transform.position = new Vector2(Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.scaledPixelWidth, 0, 0)).x + 1, Random.Range(cloudHeight.x, cloudHeight.y));
         
         SpriteRenderer rend = go.AddComponent<SpriteRenderer>();
         rend.sprite = cloudSprites[Random.Range(0, cloudSprites.Length)];

@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
+    public float Speed;
     [SerializeField] int Health = default;
-    [SerializeField] GameObject prefab_Particles;
+    [SerializeField] GameObject prefab_Particles = default;
     int health;
     private void Start()
     {
         health = Health;
+    }
+    private void Update()
+    {
+        transform.position += new Vector3(0, -Speed * Time.deltaTime);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

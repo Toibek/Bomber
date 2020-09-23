@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_web_client_id" xmlns:tools="http://schemas.android.com/tools">
-  <string name="firebase_database_url" translatable="false">https://mobile-bomber-11137065.firebaseio.com</string>
-  <string name="gcm_defaultSenderId" translatable="false">541023474064</string>
-  <string name="google_storage_bucket" translatable="false">mobile-bomber-11137065.appspot.com</string>
-  <string name="project_id" translatable="false">mobile-bomber-11137065</string>
-  <string name="google_api_key" translatable="false">AIzaSyDC6SRnfI96z1JbTyfjHnGmbGPn6fHMKSg</string>
-  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDC6SRnfI96z1JbTyfjHnGmbGPn6fHMKSg</string>
-  <string name="google_app_id" translatable="false">1:541023474064:android:f884ab5daf5ddb2a2b2315</string>
-  <string name="default_web_client_id" translatable="false">541023474064-oeglkr5b0bgkaaok3rrt2sbumgb1s7ig.apps.googleusercontent.com</string>
+  <string name="firebase_database_url" translatable="false">https://toibektest.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">664110324084</string>
+  <string name="google_storage_bucket" translatable="false">toibektest.appspot.com</string>
+  <string name="project_id" translatable="false">toibektest</string>
+  <string name="google_api_key" translatable="false">AIzaSyDf0eBO-8aT6EU_gxSGtpO6ovErb9tF0vs</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDf0eBO-8aT6EU_gxSGtpO6ovErb9tF0vs</string>
+  <string name="google_app_id" translatable="false">1:664110324084:android:80c0150d70c1bf764c7421</string>
+  <string name="default_web_client_id" translatable="false">664110324084-kubv2taou2rk879ekad13btond0s2775.apps.googleusercontent.com</string>
 </resources>

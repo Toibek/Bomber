@@ -112,6 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 846b932c22852e34493e9a04a1d62acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Speed: 0
   Health: 2
   prefab_Particles: {fileID: 7599466087358000009, guid: 6a478a020d13a0f47b83a32164343518,
     type: 3}
@@ -130,9 +131,9 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5

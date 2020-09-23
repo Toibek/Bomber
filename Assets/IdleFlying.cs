@@ -7,7 +7,9 @@ public class IdleFlying : MonoBehaviour
     float edge;
     private void Start()
     {
-        edge = Mathf.Round(Camera.main.ScreenToWorldPoint(new Vector2(Camera.main.pixelWidth,0)).x+1);
+        edge = Camera.main.ScreenToWorldPoint(new Vector2(Camera.main.pixelWidth, 0)).x;
+        transform.GetChild(0).transform.localPosition = new Vector2(-edge * 2, 0);
+        transform.GetChild(1).transform.localPosition = new Vector2(edge * 2, 0);
     }
     private void Update()
     {
