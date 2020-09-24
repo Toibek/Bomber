@@ -43,7 +43,9 @@ public class LeaderboardManager : MonoBehaviour
             string save = PlayerPrefs.GetString("LeaderboardSave");
             if (save != "")
             {
+                Debug.Log(save);
                 string[] saveArr = save.Split(':');
+                Debug.Log(saveArr.Length);
                 playerEntry = new LeaderboardEntry(saveArr[0], saveArr[1], float.Parse(saveArr[2]));
             }
 
@@ -130,6 +132,30 @@ public class LeaderboardManager : MonoBehaviour
 
         Debug.LogError("Leaderboard: " + name + " not Found");
         return null;
+    }
+    public void SaveUser()
+    {
+        string oldSaveString = PlayerPrefs.GetString("LeaderboardSave");
+        string[] oldSave = oldSaveString.Split(':');
+        if (oldSave.Length != 3 || oldSave[0] == "" || oldSave[1] == "" || oldSave[2] == "")
+        {
+            oldSave = new string[3];
+            oldSave[0] = "Null";
+            oldSave[1] = "New";
+            oldSave[2] = "0";
+        }
+        else
+            oldSave = PlayerPrefs.GetString("LeaderboardSave").Split(':');
+        if(playerEntry.ID != "" && playerEntry.ID != "Null")
+            oldSave[0] = playerEntry.ID;
+        else
+            oldSave[0] = oldSave[0];
+
+        oldSave[1] = playerEntry.Name != "" ? playerEntry.Name : oldSave[1];
+        oldSave[2] = playerEntry.Score != 0 ? playerEntry.Score.ToString() : oldSave[2];
+        string newSave = oldSave[0] + ":" + oldSave[1] + ":" + oldSave[2];
+        Debug.Log(newSave);
+        PlayerPrefs.SetString("LeaderboardSave", newSave);
     }
 }
 [System.Serializable]
@@ -471,7 +497,7 @@ public class LeaderboardGroup : object
             entry = new LeaderboardEntry(LeaderboardManager.Instance.playerEntry);
 
         //Secures the variables on the entry
-        if (entry.ID == "")
+        if (entry.ID == "" || entry.ID == "Null")
             entry.ID = userRef.Push().Key;
         //saves it as the local entry
         LeaderboardManager.Instance.playerEntry = entry;
@@ -554,6 +580,9 @@ public class LeaderboardGroup : object
         closestOverall = closestAllTime.Compare(closestWeekly) ? closestWeekly : closestAllTime;
         closestOverall = closestOverall.Compare(closestDaily) ? closestDaily : closestOverall;
     }
+   
+    
+    
     /// <summary>
     /// Used to make a copy of an old leaderboard, copies all settings and makes new boards
     /// </summary>

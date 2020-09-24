@@ -376,6 +376,8 @@ public class PlayStatesEditor : Editor
             scr.States[i].View = (GameObject)EditorGUILayout.ObjectField(scr.States[i].View, typeof(GameObject), true);
             EditorGUILayout.EndHorizontal();
         }
+        if (GUI.changed)
+            EditorUtility.SetDirty(scr);
         base.OnInspectorGUI();
     }
 }

@@ -6,21 +6,30 @@ using UnityEngine.UI;
 public class Name : MonoBehaviour
 {
     public string PlayerName = "aaa";
-    [SerializeField] string AvaliableChars = "abcdefghijklmnopqrstuvwxyz0123456789 ";
+    [SerializeField] string AvaliableChars = "abcdefghijklmnopqrstuvwxyz";
     public GameObject[] LetterPickers;
     char[] characters;
-    private void Start()
-    {
-        characters = new char[LetterPickers.Length];
-        for (int i = 0; i < characters.Length; i++)
-            characters[i] = AvaliableChars[Random.Range(0, AvaliableChars.Length)];
-
-        PlayerName = "";
-        for (int i = 0; i < characters.Length; i++)
-            PlayerName += characters[i];
-    }
     private void OnEnable()
     {
+        characters = new char[LetterPickers.Length];
+        if (LeaderboardManager.Instance == null || LeaderboardManager.Instance.playerEntry.Name == "" )
+        {
+            for (int i = 0; i < characters.Length; i++)
+                characters[i] = AvaliableChars[Random.Range(0, AvaliableChars.Length)];
+
+            PlayerName = "";
+            for (int i = 0; i < characters.Length; i++)
+                PlayerName += characters[i];
+        }
+        else
+        {
+            PlayerName = LeaderboardManager.Instance?.playerEntry.Name;
+            for (int i = 0; i < characters.Length; i++)
+            {
+                characters[i] = PlayerName[i];
+            }
+        }
+
         for (int i = 0; i < LetterPickers.Length; i++)
         {
             GameObject go = LetterPickers[i];
@@ -68,6 +77,7 @@ public class Name : MonoBehaviour
     public void SetName()
     {
         LeaderboardManager.Instance.playerEntry.Name = PlayerName;
+        LeaderboardManager.Instance.SaveUser();
     }
 
 }

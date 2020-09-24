@@ -8,4 +8,5 @@ public enum EnumStates
 	Ad,
 	Reward,
 	Leaderboard,
+	Review,
 }

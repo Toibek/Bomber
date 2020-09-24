@@ -12,12 +12,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject prefab_Airplane = default;
     //[SerializeField] GameObject prefab_Bomb = default;
     [SerializeField] float StartHeight = default;
+    [SerializeField] float baseSpeed = default;
     [SerializeField] float ScoreToSpeedMultiplier = default;
     [SerializeField] float ScreenToSpeedMultiplier = default;
+    [SerializeField] float baseDrop = default;
+    [SerializeField] float ScoreToDropMultiplier = default;
+    [SerializeField] float ScreenToDropMultiplier = default;
+    [SerializeField] int LapsBeforeDrop = default;
     [Header("House Settings:")]
     [SerializeField] float buildspeed = default;
     [SerializeField] int startY = default;
-    [SerializeField] int Houses = default;
+    public int Houses = default;
     [SerializeField] Vector2Int HouseHeight = default;
     [SerializeField] Color[] Colors = default;
     [SerializeField] GameObject Prefab_HousePart = default;
@@ -32,7 +37,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float multiplierMissEffect = default;
     [Header("UI:")]
     [SerializeField] RectTransform[] ScoreText = default;
-
+    Coroutine routine;
     GameObject activeAirplane;
     bool skip;
     bool revived;
@@ -74,7 +79,8 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         screens++;
-        StartCoroutine(StartGameRoutine());
+        multiplier++;
+        routine =StartCoroutine(StartGameRoutine());
     }
     IEnumerator StartGameRoutine()
     {
@@ -149,7 +155,9 @@ public class GameManager : MonoBehaviour
             view.transform.GetChild(1).gameObject.SetActive(false);
             yield return new WaitForSeconds(0.2f);
         }
-        plane.GetComponent<Airplane>().Speed = 2+(score * ScoreToSpeedMultiplier) + (screens*ScreenToSpeedMultiplier);
+        plane.GetComponent<Airplane>().Speed = baseSpeed+(score * ScoreToSpeedMultiplier) + (screens*ScreenToSpeedMultiplier);
+        plane.GetComponent<Airplane>().dropSpeed = baseDrop + (score * ScoreToDropMultiplier) + (screens * ScreenToDropMultiplier);
+        plane.GetComponent<Airplane>().lapsBeforeDrop = LapsBeforeDrop;
 
         plane.GetComponent<Airplane>().StartAirplane();
         activeAirplane = plane;
@@ -161,13 +169,12 @@ public class GameManager : MonoBehaviour
 
         if (activeAirplane)
             Destroy(activeAirplane);
-
-        StopAllCoroutines();
+        StopCoroutine(routine);
     }
     public void BombUsed(bool missed)
     {
         if (missed)
-            multiplier = Mathf.RoundToInt((float)multiplier * (float)multiplierMissEffect);
+            multiplier = Mathf.RoundToInt( Mathf.Clamp(((float)multiplier * (float)multiplierMissEffect),screens,Mathf.Infinity));
         else
             multiplier++;
         updateScoreUI();
@@ -176,10 +183,12 @@ public class GameManager : MonoBehaviour
     {
         score += Mathf.RoundToInt((float)BaseScore * (float)multiplier);
         updateScoreUI();
-        //calculate and add score
-        if (transform.childCount == 1)
+        CheckForCompletion();
+    }
+    public void CheckForCompletion()
+    {
+        if (transform.childCount <= 1)
         {
-            //other stuff about clearing level
             PlaystateManager.Instance.ChangeState(EnumStates.Pause);
         }
     }
@@ -213,7 +222,7 @@ public class GameManager : MonoBehaviour
         LeaderboardManager.Instance.WriteToLeaderboard(entry);
         score = 0;
         screens = 0;
-        multiplier = 1;
+        multiplier = 0;
     }
 
 
