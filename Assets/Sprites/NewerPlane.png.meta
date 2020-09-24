@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: cfae21a24d9ca9f48ad682079856f23c
+guid: d15f7685e99eb254391266e4c2e7d58f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4598781677866410819
-    second: BuildingBits_0
+      213: 3565673896384949685
+    second: NewerPlane_0
   - first:
-      213: -8505362946182441733
-    second: BuildingBits_1
+      213: -8431840941572501090
+    second: NewerPlane_1
   - first:
-      213: -6592133040034962252
-    second: BuildingBits_2
+      213: 3812285739630246090
+    second: NewerPlane_2
   - first:
-      213: 3034836667526667419
-    second: BuildingBits_3
+      213: -6201594852672843576
+    second: NewerPlane_3
   - first:
-      213: 1876615840836447086
-    second: BuildingBits_4
+      213: -2489121818223502486
+    second: NewerPlane_4
   - first:
-      213: -6198587438015462967
-    second: BuildingBits_5
+      213: -472046568383860127
+    second: NewerPlane_5
+  - first:
+      213: 6908892524018405983
+    second: NewerPlane_6
+  - first:
+      213: 3749403172418250893
+    second: NewerPlane_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -117,91 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BuildingBits_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3436dc4129722df30800000000000000
-      internalID: 4598781677866410819
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BuildingBits_1
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bf4960bb671e6f980800000000000000
-      internalID: -8505362946182441733
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BuildingBits_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4b4a99c3de90484a0800000000000000
-      internalID: -6592133040034962252
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BuildingBits_3
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b9cd14faed7ed1a20800000000000000
-      internalID: 3034836667526667419
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BuildingBits_4
+      name: NewerPlane_0
       rect:
         serializedVersion: 2
         x: 0
@@ -215,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6b6dec1a241b0a10800000000000000
-      internalID: 1876615840836447086
+      spriteID: 5bd68ea5481db7130800000000000000
+      internalID: 3565673896384949685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BuildingBits_5
+      name: NewerPlane_1
       rect:
         serializedVersion: 2
         x: 32
@@ -236,8 +158,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c1c3ef01913af9a0800000000000000
-      internalID: -6198587438015462967
+      spriteID: e91d9f266551cfa80800000000000000
+      internalID: -8431840941572501090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewerPlane_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac8b2fc8ea5f7e430800000000000000
+      internalID: 3812285739630246090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewerPlane_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c05b85c6528fe9a0800000000000000
+      internalID: -6201594852672843576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewerPlane_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6b1d1ee4ecd47dd0800000000000000
+      internalID: -2489121818223502486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewerPlane_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162b906a524f279f0800000000000000
+      internalID: -472046568383860127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewerPlane_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f52187d452151ef50800000000000000
+      internalID: 6908892524018405983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NewerPlane_7
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8866b3f15e880430800000000000000
+      internalID: 3749403172418250893
       vertices: []
       indices: 
       edges: []

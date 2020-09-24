@@ -1,27 +1,27 @@
 fileFormatVersion: 2
-guid: d039d576785c3c54796e73d0f22bd933
+guid: cfae21a24d9ca9f48ad682079856f23c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9133106861543114933
-    second: BuildingBits (1)_0
+      213: 4598781677866410819
+    second: BuildingBits_0
   - first:
-      213: 2680888441718496861
-    second: BuildingBits (1)_1
+      213: -8505362946182441733
+    second: BuildingBits_1
   - first:
-      213: 3892792239531858117
-    second: BuildingBits (1)_2
+      213: -6592133040034962252
+    second: BuildingBits_2
   - first:
-      213: 3541218765626677902
-    second: BuildingBits (1)_3
+      213: 3034836667526667419
+    second: BuildingBits_3
   - first:
-      213: -4180093563376623017
-    second: BuildingBits (1)_4
+      213: 1876615840836447086
+    second: BuildingBits_4
   - first:
-      213: -4616253375898527512
-    second: BuildingBits (1)_5
+      213: -6198587438015462967
+    second: BuildingBits_5
   externalObjects: {}
-  serializedVersion: 10
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -75,12 +75,13 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -92,7 +93,7 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -104,19 +105,7 @@ TextureImporter:
     buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -128,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BuildingBits (1)_0
+      name: BuildingBits_0
       rect:
         serializedVersion: 2
         x: 0
@@ -142,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c484d1d75fc28194ea5c0cfde575b686
-      internalID: -9133106861543114933
+      spriteID: 3436dc4129722df30800000000000000
+      internalID: 4598781677866410819
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BuildingBits (1)_1
+      name: BuildingBits_1
       rect:
         serializedVersion: 2
         x: 32
@@ -163,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8239f0a897ede84ca704f5c92e36c96
-      internalID: 2680888441718496861
+      spriteID: bf4960bb671e6f980800000000000000
+      internalID: -8505362946182441733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BuildingBits (1)_2
+      name: BuildingBits_2
       rect:
         serializedVersion: 2
         x: 0
@@ -184,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5796d7178541a2145a39c330053ca7b6
-      internalID: 3892792239531858117
+      spriteID: 4b4a99c3de90484a0800000000000000
+      internalID: -6592133040034962252
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BuildingBits (1)_3
+      name: BuildingBits_3
       rect:
         serializedVersion: 2
         x: 32
@@ -205,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b82576afcf5a9224bb508df46b9c0c73
-      internalID: 3541218765626677902
+      spriteID: b9cd14faed7ed1a20800000000000000
+      internalID: 3034836667526667419
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BuildingBits (1)_4
+      name: BuildingBits_4
       rect:
         serializedVersion: 2
         x: 0
@@ -226,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59f49838bded5c1409318869f5fb8af6
-      internalID: -4180093563376623017
+      spriteID: e6b6dec1a241b0a10800000000000000
+      internalID: 1876615840836447086
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BuildingBits (1)_5
+      name: BuildingBits_5
       rect:
         serializedVersion: 2
         x: 32
@@ -247,8 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03f5ddbf95cd3c54a986d846698f7071
-      internalID: -4616253375898527512
+      spriteID: 9c1c3ef01913af9a0800000000000000
+      internalID: -6198587438015462967
       vertices: []
       indices: 
       edges: []

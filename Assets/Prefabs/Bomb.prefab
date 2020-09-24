@@ -73,7 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 527843d420a0fd1429b2257a83fbdc76, type: 3}
+  m_Sprite: {fileID: 3749403172418250893, guid: d15f7685e99eb254391266e4c2e7d58f,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -113,9 +114,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 0
-  Health: 2
+  Health: 1
   prefab_Particles: {fileID: 7599466087358000009, guid: 6a478a020d13a0f47b83a32164343518,
     type: 3}
+  explosionSound: {fileID: 8300000, guid: 0e0abbfb48685fc45bd6fbdef42040e0, type: 3}
+  ToDestroy: []
 --- !u!50 &1914856639663936906
 Rigidbody2D:
   serializedVersion: 4

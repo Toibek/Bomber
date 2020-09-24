@@ -70,7 +70,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7377fcb66b554974e97f6fc09fb30dc3, type: 3}
+  m_Sprite: {fileID: 6908892524018405983, guid: d15f7685e99eb254391266e4c2e7d58f,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,7 +152,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7377fcb66b554974e97f6fc09fb30dc3, type: 3}
+  m_Sprite: {fileID: 6908892524018405983, guid: d15f7685e99eb254391266e4c2e7d58f,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -210,9 +212,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb743b468a429b46b21fd1d1fc182e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 0
-  dropSpeed: 0.15
   prefab_Bomb: {fileID: 1914856639663936911, guid: 0a097bf1fea989d479556cc1fbeac759,
+    type: 3}
+  BombsPerLap: 2
+  WithBomb: {fileID: 6908892524018405983, guid: d15f7685e99eb254391266e4c2e7d58f,
+    type: 3}
+  WithoutBomb: {fileID: -472046568383860127, guid: d15f7685e99eb254391266e4c2e7d58f,
     type: 3}
 --- !u!212 &5790519262091619500
 SpriteRenderer:
@@ -253,7 +258,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7377fcb66b554974e97f6fc09fb30dc3, type: 3}
+  m_Sprite: {fileID: 6908892524018405983, guid: d15f7685e99eb254391266e4c2e7d58f,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] float multiplierMissEffect = default;
     [Header("UI:")]
     [SerializeField] RectTransform[] ScoreText = default;
+    [Header("Sounds:")]
+    [SerializeField] AudioClip StartSound;
+    [SerializeField] AudioClip DeathSound;
     Coroutine routine;
     GameObject activeAirplane;
     bool skip;
@@ -147,6 +150,7 @@ public class GameManager : MonoBehaviour
         skip = true;
 
         GameObject view = PlaystateManager.Instance.GetState(EnumStates.PlayMode).View;
+        SoundManager.Play(StartSound);
         GameObject plane = Instantiate(prefab_Airplane, new Vector3(0, StartHeight), Quaternion.identity);
         for (int i = 0; i < 3; i++)
         {
@@ -202,6 +206,7 @@ public class GameManager : MonoBehaviour
     }
     public void CrashPlane()
     {
+        SoundManager.Play(DeathSound);
         if (!revived)
         {
             PlaystateManager.Instance.ChangeState(EnumStates.Reward);

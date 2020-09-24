@@ -6,6 +6,8 @@ public class Airplane : MonoBehaviour
 {
     public GameObject prefab_Bomb;
     public int BombsPerLap = 2;
+    [SerializeField] Sprite WithBomb = default;
+    [SerializeField] Sprite WithoutBomb = default;
 
     internal float Speed;
     internal float dropSpeed;
@@ -36,6 +38,13 @@ public class Airplane : MonoBehaviour
                 GameManager.Instance.CheckForCompletion();
                 lapsBeforeDrop--;
                 bombs = BombsPerLap;
+
+                if (bombs > 0)
+                {
+                    GetComponent<SpriteRenderer>().sprite = WithBomb;
+                    transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = WithBomb;
+                    transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = WithBomb;
+                }
             }
             if (Input.GetKeyDown(KeyCode.Mouse0) && bombs > 0)
             {
@@ -44,6 +53,12 @@ public class Airplane : MonoBehaviour
                     GameObject go = Instantiate(prefab_Bomb, new Vector3(Mathf.Round(transform.position.x), transform.position.y - 0.5f), Quaternion.identity);
                     go.GetComponent<Bomb>().Speed = Speed;
                     bombs--;
+                    if (bombs <= 0)
+                    {
+                        GetComponent<SpriteRenderer>().sprite = WithoutBomb;
+                        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = WithoutBomb;
+                        transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = WithoutBomb;
+                    }
                 }
             }
         }
