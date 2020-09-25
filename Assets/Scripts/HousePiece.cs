@@ -23,4 +23,5 @@ public class HousePiece : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public static int Compare(HousePiece x, HousePiece y) => x.transform.position.y < y.transform.position.y ? 1 : 0;
 }

@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
         skip = true;
 
         GameObject view = PlaystateManager.Instance.GetState(EnumStates.PlayMode).View;
-        SoundManager.Play(StartSound);
+        SoundManager.PlaySolo(StartSound);
         GameObject plane = Instantiate(prefab_Airplane, new Vector3(0, StartHeight), Quaternion.identity);
         for (int i = 0; i < 3; i++)
         {
@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
     }
     public void CrashPlane()
     {
-        SoundManager.Play(DeathSound);
+        SoundManager.PlaySolo(DeathSound);
         if (!revived)
         {
             PlaystateManager.Instance.ChangeState(EnumStates.Reward);

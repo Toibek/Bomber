@@ -16,7 +16,8 @@ public class Reward : MonoBehaviour
     }
     void startCounter()
     {
-        Counting = StartCoroutine(Countdown());
+        adStarted = false;
+        Counting = GameManager.Instance.StartCoroutine(Countdown());
     }
     IEnumerator Countdown()
     {
@@ -25,6 +26,7 @@ public class Reward : MonoBehaviour
             Counter.text = i.ToString();
             yield return new WaitForSeconds(1);
         }
+
         if (!adStarted)
         {
             if (PlaySkippableAnyway)
@@ -34,12 +36,11 @@ public class Reward : MonoBehaviour
             }
             else
                 PlaystateManager.Instance.ChangeState(EnumStates.Death);
+
             GameManager.Instance.HandleDeath();
         }
         else
             yield return new WaitForSeconds(2);
-        if (adStarted)
-            rewardEnd(false);
     }
 
     public void StartReward()
@@ -50,7 +51,6 @@ public class Reward : MonoBehaviour
     }
     void rewardEnd(bool skipped)
     {
-        adStarted = false;
         if (skipped)
         {
             PlaystateManager.Instance.ChangeState(EnumStates.Death);

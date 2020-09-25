@@ -26,6 +26,7 @@ public class SoundManager : MonoBehaviour
     #endregion
 
     public static void Play(AudioClip clip) => Instance?.PlaySound(clip);
+    public static void PlaySolo(AudioClip clip) => Instance?.PlaySoundSolo(clip);
     void Start()
     {
         MusicPlayer = GetComponent<AudioSource>();
@@ -54,6 +55,16 @@ public class SoundManager : MonoBehaviour
             Players.Remove(source);
             Destroy(source.gameObject, clip.length);
         }
+    }
+    public void PlaySoundSolo(AudioClip clip)
+    {
+        MusicPlayer.mute = true;
+        PlaySound(clip);
+        Invoke("UnpauseMusic", clip.length);
+    }
+    public void UnpauseMusic()
+    {
+        MusicPlayer.mute = false;
     }
     public AudioSource GetAvaliable()
     {
