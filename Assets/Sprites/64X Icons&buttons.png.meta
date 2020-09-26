@@ -1,34 +1,85 @@
 fileFormatVersion: 2
-guid: 8e2f193e5b747d648a9a93ed5be7795a
+guid: b789a8ebb0e563647889e65c8f8596fb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 21300000
-    second: BlitzButton_0
+      213: 6040548004158232961
+    second: 64X Icons&buttons_0
   - first:
-      213: 21300002
-    second: BlitzButton_1
+      213: -3922701596075824630
+    second: 64X Icons&buttons_1
   - first:
-      213: 21300004
-    second: BlitzButton_2
+      213: -3925784416770036139
+    second: 64X Icons&buttons_2
   - first:
-      213: 21300006
-    second: BlitzButton_3
+      213: -3449039731903522125
+    second: 64X Icons&buttons_3
   - first:
-      213: 21300008
-    second: BlitzButton_4
+      213: -4670688227082582998
+    second: 64X Icons&buttons_4
   - first:
-      213: 21300010
-    second: BlitzButton_5
+      213: -2272277093816898616
+    second: 64X Icons&buttons_5
   - first:
-      213: 21300012
-    second: BlitzButton_6
+      213: -5355312960419136521
+    second: Yes
   - first:
-      213: 21300014
-    second: BlitzButton_7
+      213: -4853504776327227568
+    second: No
   - first:
-      213: 21300016
-    second: BlitzButton_8
+      213: 1523845946562990102
+    second: Leaderboard
+  - first:
+      213: -6277693075238809400
+    second: Start
+  - first:
+      213: -9034568627477168016
+    second: Home
+  - first:
+      213: 6774139960910730864
+    second: Restart
+  - first:
+      213: 4972051959406472341
+    second: ID
+  - first:
+      213: -573953657120328353
+    second: 64X Icons&buttons_0
+  - first:
+      213: -3562276608629547209
+    second: 64X Icons&buttons_1
+  - first:
+      213: -7422108041540557055
+    second: 64X Icons&buttons_2
+  - first:
+      213: 6358744609181062928
+    second: 64X Icons&buttons_3
+  - first:
+      213: 2117375101520910970
+    second: 64X Icons&buttons_4
+  - first:
+      213: 2575420423534936497
+    second: 64X Icons&buttons_5
+  - first:
+      213: -8541604425419094021
+    second: Yes
+  - first:
+      213: -4098103633898930953
+    second: No
+  - first:
+      213: 6317201187494457812
+    second: Leaderboard
+  - first:
+      213: -1993755855491981551
+    second: Start
+  - first:
+      213: 7016619154546507339
+    second: Home
+  - first:
+      213: 6702590300634114400
+    second: Restart
+  - first:
+      213: 8153121352573227152
+    second: ID
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -67,13 +118,13 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
-  spriteBorder: {x: 3, y: 3, z: 3, w: 3}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -84,7 +135,7 @@ TextureImporter:
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
-  applyGammaDecoding: 1
+  applyGammaDecoding: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -119,18 +170,6 @@ TextureImporter:
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 1
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
@@ -138,55 +177,55 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BlitzButton_0
+      name: 64X Icons&buttons_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 22
-        width: 10
-        height: 10
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 8, y: 8, z: 8, w: 8}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4cbe8c2cf0c8a5d428f11f63c88dbcd3
-      internalID: 0
+      spriteID: f557ec59038e808f0800000000000000
+      internalID: -573953657120328353
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlitzButton_1
+      name: 64X Icons&buttons_1
       rect:
         serializedVersion: 2
-        x: 11
-        y: 22
-        width: 10
-        height: 10
+        x: 64
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 8, y: 8, z: 8, w: 8}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b131bea665041441a941eb30bad4695
-      internalID: 0
+      spriteID: 73fd3f65c40409ec0800000000000000
+      internalID: -3562276608629547209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlitzButton_2
+      name: 64X Icons&buttons_2
       rect:
         serializedVersion: 2
-        x: 22
-        y: 22
-        width: 10
-        height: 10
+        x: 128
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -194,20 +233,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cad10306b9025f24887254f847b9131f
-      internalID: 0
+      spriteID: 107a76b6f006ff890800000000000000
+      internalID: -7422108041540557055
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlitzButton_3
+      name: 64X Icons&buttons_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 11
-        width: 10
-        height: 10
+        x: 192
+        y: 192
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,62 +254,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2924aaa828c348f45a9e9b4cc7426f16
-      internalID: 0
+      spriteID: 017daaf288cce3850800000000000000
+      internalID: 6358744609181062928
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlitzButton_4
-      rect:
-        serializedVersion: 2
-        x: 11
-        y: 11
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd60592eb6fac1f49aa3a3bedf3542c7
-      internalID: 0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BlitzButton_5
-      rect:
-        serializedVersion: 2
-        x: 22
-        y: 11
-        width: 10
-        height: 10
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 768d60b6e14fd6a4a8b63d693aa3d277
-      internalID: 0
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BlitzButton_6
+      name: 64X Icons&buttons_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 10
-        height: 10
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +275,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff7b1cefbe970664ead01f5997624d25
-      internalID: 0
+      spriteID: a7a196ebf6d626d10800000000000000
+      internalID: 2117375101520910970
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlitzButton_7
+      name: 64X Icons&buttons_5
       rect:
         serializedVersion: 2
-        x: 11
-        y: 0
-        width: 10
-        height: 10
+        x: 64
+        y: 128
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,20 +296,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 288ffa0149931764280e304efab7ea0f
-      internalID: 0
+      spriteID: 1b10614ea3bbdb320800000000000000
+      internalID: 2575420423534936497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BlitzButton_8
+      name: Yes
       rect:
         serializedVersion: 2
-        x: 22
-        y: 0
-        width: 10
-        height: 10
+        x: 136
+        y: 136
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -320,8 +317,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 255afffda3643344482db84dfc87f5b8
-      internalID: 0
+      spriteID: bf78dfac700267980800000000000000
+      internalID: -8541604425419094021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: No
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 136
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fc77b8257c9027c0800000000000000
+      internalID: -4098103633898930953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Leaderboard
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 72
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d1784392053ba750800000000000000
+      internalID: 6317201187494457812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Start
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 72
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11f9b80ec91c454e0800000000000000
+      internalID: -1993755855491981551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Home
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 72
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4e32f602f9006160800000000000000
+      internalID: 7016619154546507339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Restart
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 72
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0696648dd52640d50800000000000000
+      internalID: 6702590300634114400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ID
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 8
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09097ce4ca4b52170800000000000000
+      internalID: 8153121352573227152
       vertices: []
       indices: 
       edges: []
@@ -329,7 +452,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 15b62d481b1a5494fb8eaddc295fa50b
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 

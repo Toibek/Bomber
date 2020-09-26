@@ -15,6 +15,12 @@ public class FontSetter : MonoBehaviour
         for (int i = 0; i < texts.Length; i++)
             texts[i].font = font;
     }
+    public void SetNativeSize()
+    {
+        Image[] images = GetComponentsInChildren<Image>();
+        for (int i = 0; i < images.Length; i++)
+            images[i].SetNativeSize();
+    }
 }
 #if UNITY_EDITOR
 [CustomEditor(typeof(FontSetter))]
@@ -33,6 +39,8 @@ class FontSetterIspector : Editor
         if (GUILayout.Button("Set Font"))
             scr.SetFont();
         GUILayout.EndHorizontal();
+        if (GUILayout.Button("Set Native Size"))
+            scr.SetNativeSize();
     }
 }
 #endif
