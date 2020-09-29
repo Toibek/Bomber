@@ -216,6 +216,8 @@ MonoBehaviour:
   prefab_Bomb: {fileID: 1914856639663936911, guid: 0a097bf1fea989d479556cc1fbeac759,
     type: 3}
   BombsPerLap: 2
+  SpeedPerLap: 1
+  DropPerLap: 0
 --- !u!212 &5790519262091619500
 SpriteRenderer:
   m_ObjectHideFlags: 0

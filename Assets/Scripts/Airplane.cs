@@ -5,11 +5,14 @@ using UnityEngine;
 public class Airplane : MonoBehaviour
 {
     public GameObject prefab_Bomb;
-    public int BombsPerLap = 2;
+    [SerializeField] bool SpeedPerLap = default;
+    [SerializeField] bool DropPerLap = default;
 
     internal float Speed;
     internal float dropSpeed;
     internal int lapsBeforeDrop;
+    internal int BombsPerLap;
+
     bool started = false;
     float edge;
     Bomb[] bombs;
@@ -18,6 +21,11 @@ public class Airplane : MonoBehaviour
         edge = Camera.main.ScreenToWorldPoint(new Vector2(Camera.main.pixelWidth, 0)).x;
         transform.GetChild(0).transform.localPosition = new Vector2(-edge * 2, 0);
         transform.GetChild(1).transform.localPosition = new Vector2(edge * 2, 0);
+    }
+    public void StartAirplane() 
+    {
+        started = true;
+
         bombs = new Bomb[BombsPerLap];
 
         for (int i = 0; i < bombs.Length; i++)
@@ -26,7 +34,6 @@ public class Airplane : MonoBehaviour
                 bombs[i] = Instantiate(prefab_Bomb, new Vector3(transform.position.x, transform.position.y - 0.3f), Quaternion.identity, transform).GetComponent<Bomb>();
         }
     }
-    public void StartAirplane() => started = true;
     private void Update()
     {
         if (started)
@@ -40,13 +47,18 @@ public class Airplane : MonoBehaviour
             {
                 transform.position = new Vector3(-edge, transform.position.y);
                 GameManager.Instance.CheckForCompletion();
+
+                if(SpeedPerLap)
+                    Speed = GameManager.Instance.CalculateSpeed();
+                if (DropPerLap)
+                    dropSpeed = GameManager.Instance.CalculateDrop();
+
                 lapsBeforeDrop--;
                 for (int i = 0; i < bombs.Length; i++)
                 {
                     if (bombs[i] == null)
                         bombs[i] = Instantiate(prefab_Bomb, new Vector3(transform.position.x, transform.position.y - 0.3f), Quaternion.identity, transform).GetComponent<Bomb>();
                 }
-
             }
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {

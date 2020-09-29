@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "664110324084",
-    "firebase_url": "https://toibektest.firebaseio.com",
-    "project_id": "toibektest",
-    "storage_bucket": "toibektest.appspot.com"
+    "project_number": "541023474064",
+    "firebase_url": "https://mobile-bomber-11137065.firebaseio.com",
+    "project_id": "mobile-bomber-11137065",
+    "storage_bucket": "mobile-bomber-11137065.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:664110324084:android:80c0150d70c1bf764c7421",
+        "mobilesdk_app_id": "1:541023474064:android:f884ab5daf5ddb2a2b2315",
         "android_client_info": {
-          "package_name": "com.Cafiend.Bomber"
+          "package_name": "com.Mobile.Blitz"
         }
       },
       "oauth_client": [
         {
-          "client_id": "664110324084-kubv2taou2rk879ekad13btond0s2775.apps.googleusercontent.com",
+          "client_id": "541023474064-oeglkr5b0bgkaaok3rrt2sbumgb1s7ig.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDf0eBO-8aT6EU_gxSGtpO6ovErb9tF0vs"
+          "current_key": "AIzaSyDC6SRnfI96z1JbTyfjHnGmbGPn6fHMKSg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "664110324084-kubv2taou2rk879ekad13btond0s2775.apps.googleusercontent.com",
+              "client_id": "541023474064-oeglkr5b0bgkaaok3rrt2sbumgb1s7ig.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "664110324084-88j239d9ku46390v9rorr96dr573hjg3.apps.googleusercontent.com",
+              "client_id": "541023474064-74112q37lsla7inastbl6vag7mkfqkp6.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.Cafiend.ProjectBiggy"
+                "bundle_id": "com.cafiend.mobileblitz"
               }
             }
           ]
@@ -44,34 +44,34 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:664110324084:android:018dd6752dda9fae4c7421",
+        "mobilesdk_app_id": "1:541023474064:android:6c3a58954ab054892b2315",
         "android_client_info": {
-          "package_name": "com.Cafiend.ProjectBiggy"
+          "package_name": "com.cafiend.mobileblitz"
         }
       },
       "oauth_client": [
         {
-          "client_id": "664110324084-kubv2taou2rk879ekad13btond0s2775.apps.googleusercontent.com",
+          "client_id": "541023474064-oeglkr5b0bgkaaok3rrt2sbumgb1s7ig.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDf0eBO-8aT6EU_gxSGtpO6ovErb9tF0vs"
+          "current_key": "AIzaSyDC6SRnfI96z1JbTyfjHnGmbGPn6fHMKSg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "664110324084-kubv2taou2rk879ekad13btond0s2775.apps.googleusercontent.com",
+              "client_id": "541023474064-oeglkr5b0bgkaaok3rrt2sbumgb1s7ig.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "664110324084-88j239d9ku46390v9rorr96dr573hjg3.apps.googleusercontent.com",
+              "client_id": "541023474064-74112q37lsla7inastbl6vag7mkfqkp6.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.Cafiend.ProjectBiggy"
+                "bundle_id": "com.cafiend.mobileblitz"
               }
             }
           ]

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] float ScoreToDropMultiplier = default;
     [SerializeField] float ScreenToDropMultiplier = default;
     [SerializeField] int LapsBeforeDrop = default;
+    [SerializeField] int bombsPerLap = default;
     [Header("House Settings:")]
     [SerializeField] float buildspeed = default;
     [SerializeField] int startY = default;
@@ -159,13 +160,17 @@ public class GameManager : MonoBehaviour
             view.transform.GetChild(1).gameObject.SetActive(false);
             yield return new WaitForSeconds(0.2f);
         }
-        plane.GetComponent<Airplane>().Speed = baseSpeed+(score * ScoreToSpeedMultiplier) + (screens*ScreenToSpeedMultiplier);
-        plane.GetComponent<Airplane>().dropSpeed = baseDrop + (score * ScoreToDropMultiplier) + (screens * ScreenToDropMultiplier);
+
+        plane.GetComponent<Airplane>().Speed = CalculateSpeed();
+        plane.GetComponent<Airplane>().dropSpeed = CalculateDrop();
         plane.GetComponent<Airplane>().lapsBeforeDrop = LapsBeforeDrop;
+        plane.GetComponent<Airplane>().BombsPerLap = bombsPerLap;
 
         plane.GetComponent<Airplane>().StartAirplane();
         activeAirplane = plane;
     }
+    public float CalculateSpeed() => baseSpeed + (score * ScoreToSpeedMultiplier) + (screens * ScreenToSpeedMultiplier);
+    public float CalculateDrop() => baseDrop + (score * ScoreToDropMultiplier) + (screens * ScreenToDropMultiplier);
     public void ClearGame()
     {
         for (int i = transform.childCount - 1; i >= 0; i--)
@@ -193,6 +198,11 @@ public class GameManager : MonoBehaviour
     {
         if (transform.childCount <= 1)
         {
+            GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
+            for (int i = 0; i < bombs.Length; i++)
+                Destroy(bombs[i]);
+            Destroy(activeAirplane);
+
             PlaystateManager.Instance.ChangeState(EnumStates.Pause);
         }
     }
@@ -201,11 +211,15 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < ScoreText.Length; i++)
         {
         ScoreText[i].GetComponent<Text>().text = score.ToString("n0");
-        ScoreText[i].GetChild(0).GetComponent<Text>().text = "X" + multiplier.ToString("n0");
+        ScoreText[i].GetChild(0).GetComponent<Text>().text = "X " + multiplier.ToString("n0");
         }
     }
     public void CrashPlane()
     {
+        GameObject[] bombs = GameObject.FindGameObjectsWithTag("Bomb");
+        for (int i = 0; i < bombs.Length; i++)
+            Destroy(bombs[i]);
+
         SoundManager.PlaySolo(DeathSound);
         if (!revived)
         {
