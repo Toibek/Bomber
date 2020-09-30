@@ -9503,6 +9503,11 @@ PrefabInstance:
       propertyPath: minutesBetweenVideos
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3781866343019177367, guid: 3bb014d1d66f3e8428b2b635c51f623f,
+        type: 3}
+      propertyPath: testMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bb014d1d66f3e8428b2b635c51f623f, type: 3}
 --- !u!1 &1611749741
