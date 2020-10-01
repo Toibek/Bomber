@@ -33,7 +33,7 @@ public class ReviewManager : MonoBehaviour
     void Start()
     {
 #if UNITY_IOS
-        setIos()
+        setIos();
 #elif UNITY_ANDROID
         setAndroid();
 #endif
