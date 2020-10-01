@@ -32,7 +32,7 @@ public class AdManager : MonoBehaviour, IUnityAdsListener
             Instance = this;
             Advertisement.AddListener(this);
 #if UNITY_IOS
-            Advertisement.Initialize(IOSGameID, testMode);
+            Advertisement.Initialize(IOSGameId, testMode);
 #elif UNITY_ANDROID
             Advertisement.Initialize(androidGameID, testMode);
 #endif
