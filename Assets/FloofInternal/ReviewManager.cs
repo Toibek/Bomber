@@ -8,7 +8,7 @@ public class ReviewManager : MonoBehaviour
     public string IOSAppID = "";
     string URL;
     float timer;
-    readonly string IOSurl = "itms://itunes.apple.com/us/app/apple-store/{0}?mt=8";
+    readonly string IOSurl = "https://apps.apple.com/app/id{0}";
     readonly string GPurl = "http://play.google.com/store/apps/details?id={0}";
     bool blockReview;
     #region singleton

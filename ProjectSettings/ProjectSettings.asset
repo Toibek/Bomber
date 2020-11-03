@@ -178,7 +178,7 @@ PlayerSettings:
     iPhone: 01
   AndroidBundleVersionCode: 20
   AndroidMinSdkVersion: 19
-  AndroidTargetSdkVersion: 30
+  AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
   aotOptions: 
   stripEngineCode: 1
