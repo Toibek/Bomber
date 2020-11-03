@@ -7,7 +7,6 @@ public class Reward : MonoBehaviour
 {
     [SerializeField] int waitTime = default;
     [SerializeField] Text Counter = default;
-    [SerializeField] bool PlaySkippableAnyway = default;
     Coroutine Counting;
     bool adStarted;
     void Start()
@@ -29,13 +28,7 @@ public class Reward : MonoBehaviour
 
         if (!adStarted)
         {
-            if (PlaySkippableAnyway)
-            {
-                PlaystateManager.Instance.GetState(EnumStates.Ad).View.GetComponent<Ad>().SetState(EnumStates.Death);
-                PlaystateManager.Instance.ChangeState(EnumStates.Ad);
-            }
-            else
-                PlaystateManager.Instance.ChangeState(EnumStates.Death);
+            PlaystateManager.Instance.ChangeState(EnumStates.Death);
 
             GameManager.Instance.HandleDeath();
         }

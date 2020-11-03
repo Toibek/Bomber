@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1422047707766884819}
   - component: {fileID: 1422047707766884818}
   - component: {fileID: 1422047707766884820}
+  - component: {fileID: 936956911}
   m_Layer: 0
   m_Name: Groundpiece
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -6355905682509795804, guid: 6ce07994140bb6346a634d7018c84289,
+  m_Sprite: {fileID: 5435608014139152121, guid: 6474f96400b13dc47a722dbc5e614fb3,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,8 +97,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stages:
-  - {fileID: -6355905682509795804, guid: 6ce07994140bb6346a634d7018c84289, type: 3}
-  - {fileID: 1064205067245275177, guid: 6ce07994140bb6346a634d7018c84289, type: 3}
-  - {fileID: 4330019821098174396, guid: 6ce07994140bb6346a634d7018c84289, type: 3}
-  - {fileID: 7304838973885633963, guid: 6ce07994140bb6346a634d7018c84289, type: 3}
-  - {fileID: 9080016275003540973, guid: 6ce07994140bb6346a634d7018c84289, type: 3}
+  - {fileID: 5435608014139152121, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
+  - {fileID: -4335991441621654067, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
+  - {fileID: 6729572152601682, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
+  - {fileID: -4626572278127738360, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
+  - {fileID: -258414757459904609, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
+  - {fileID: -8451753915077823089, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
+--- !u!61 &936956911
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1422047707766884817}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.16}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.7}
+  m_EdgeRadius: 0
