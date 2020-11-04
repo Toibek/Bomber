@@ -9,4 +9,5 @@ public enum EnumStates
 	Reward,
 	Leaderboard,
 	Review,
+	OtherGames,
 }

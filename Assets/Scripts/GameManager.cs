@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] float speed;
+    [SerializeField] float drop;
+    [Space]
     [SerializeField] int score = default;
     [SerializeField] int multiplier = default;
     [SerializeField] int screens = default;
@@ -15,10 +18,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] float baseSpeed = default;
     [SerializeField] float ScoreToSpeedMultiplier = default;
     [SerializeField] float ScreenToSpeedMultiplier = default;
+    [SerializeField] float maxSpeed = default;
+    [Space]
     [SerializeField] float baseDrop = default;
     [SerializeField] float ScoreToDropMultiplier = default;
     [SerializeField] float ScreenToDropMultiplier = default;
     [SerializeField] int LapsBeforeDrop = default;
+    [SerializeField] float maxDrop = default;
+    [Space]
     [SerializeField] int bombsPerLap = default;
     [Header("House Settings:")]
     [SerializeField] float buildspeed = default;
@@ -38,13 +45,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] float multiplierMissEffect = default;
     [Header("UI:")]
     [SerializeField] RectTransform[] ScoreText = default;
+    [SerializeField] float scoreIncrements;
     [Header("Sounds:")]
     [SerializeField] AudioClip StartSound;
     [SerializeField] AudioClip DeathSound;
     Coroutine routine;
     GameObject activeAirplane;
+    Coroutine ScoreCounter;
     bool skip;
     bool revived;
+    int shownScore = 0;
+    int scoreDiff;
 
     #region Singleton
     public static GameManager Instance;
@@ -88,6 +99,8 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator StartGameRoutine()
     {
+        if(ScoreCounter == null)
+            ScoreCounter = StartCoroutine(WriteScore());
         updateScoreUI();
         skip = false;
         for (int i = 0; i < ground.transform.childCount; i++)
@@ -169,8 +182,16 @@ public class GameManager : MonoBehaviour
         plane.GetComponent<Airplane>().StartAirplane();
         activeAirplane = plane;
     }
-    public float CalculateSpeed() => baseSpeed + (score * ScoreToSpeedMultiplier) + (screens * ScreenToSpeedMultiplier);
-    public float CalculateDrop() => baseDrop + (score * ScoreToDropMultiplier) + (screens * ScreenToDropMultiplier);
+    public float CalculateSpeed()
+    {
+        speed = Mathf.Clamp(baseSpeed + (score * ScoreToSpeedMultiplier) + (screens * ScreenToSpeedMultiplier), 0, maxSpeed);
+        return speed;
+    }
+    public float CalculateDrop()
+    {
+        drop = Mathf.Clamp(baseDrop + (score * ScoreToDropMultiplier) + (screens * ScreenToDropMultiplier), 0, maxDrop);
+        return drop;
+    }
     public void ClearGame()
     {
         for (int i = transform.childCount - 1; i >= 0; i--)
@@ -208,10 +229,21 @@ public class GameManager : MonoBehaviour
     }
     public void updateScoreUI()
     {
+        scoreDiff = score - shownScore;
         for (int i = 0; i < ScoreText.Length; i++)
         {
-        ScoreText[i].GetComponent<Text>().text = score.ToString("n0");
-        ScoreText[i].GetChild(0).GetComponent<Text>().text = "X " + multiplier.ToString("n0");
+            if(ScoreText[i].GetChild(0) != null)
+                ScoreText[i].GetChild(0).GetComponent<Text>().text = "X " + multiplier.ToString("n0");
+        }
+    }
+    IEnumerator WriteScore()
+    {
+        while (true)
+        {
+            shownScore = Mathf.Clamp(shownScore + Mathf.RoundToInt(scoreDiff*scoreIncrements) , 0, score);
+            for (int i = 0; i < ScoreText.Length; i++)
+                ScoreText[i].GetComponent<Text>().text = shownScore.ToString("n0");
+            yield return new WaitForSeconds(0.05f);
         }
     }
     public void CrashPlane()
@@ -229,17 +261,22 @@ public class GameManager : MonoBehaviour
         else
         {
             HandleDeath();
-            PlaystateManager.Instance.GetState(EnumStates.Ad).View.GetComponent<Ad>().SetState(EnumStates.Death);
-            PlaystateManager.Instance.ChangeState(EnumStates.Ad);
+            //PlaystateManager.Instance.GetState(EnumStates.Ad).View.GetComponent<Ad>().SetState(EnumStates.Death);
+            PlaystateManager.Instance.ChangeState(EnumStates.Death);
         }
     }
     public void HandleDeath()
     {
+        StopCoroutine(ScoreCounter);
+        ScoreCounter = null;
+        updateScoreUI();
+
         LeaderboardEntry entry = LeaderboardManager.Instance.playerEntry;
         revived = false;
         entry.Score = score;
         LeaderboardManager.Instance.WriteToLeaderboard(entry);
         score = 0;
+        shownScore = 0;
         screens = 0;
         multiplier = 0;
     }
