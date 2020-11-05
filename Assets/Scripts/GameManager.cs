@@ -46,6 +46,8 @@ public class GameManager : MonoBehaviour
     [Header("UI:")]
     [SerializeField] RectTransform[] ScoreText = default;
     [SerializeField] float scoreIncrements;
+    [SerializeField] Text DeathText = default;
+    [SerializeField] string[] DeathMessage;
     [Header("Sounds:")]
     [SerializeField] AudioClip StartSound;
     [SerializeField] AudioClip DeathSound;
@@ -270,15 +272,31 @@ public class GameManager : MonoBehaviour
         StopCoroutine(ScoreCounter);
         ScoreCounter = null;
         updateScoreUI();
+        SetDeathText();
 
         LeaderboardEntry entry = LeaderboardManager.Instance.playerEntry;
         revived = false;
+        if (score > PlayerPrefs.GetInt("Highscore"))
+            PlayerPrefs.SetInt("Highscore",score);
         entry.Score = score;
         LeaderboardManager.Instance.WriteToLeaderboard(entry);
         score = 0;
         shownScore = 0;
         screens = 0;
         multiplier = 0;
+    }
+    void SetDeathText()
+    {
+        if(score >= PlayerPrefs.GetInt("Highscore"))
+        {
+            DeathText.text = "New high score!";
+            DeathText.color = Color.yellow;
+        }
+        else
+        {
+            DeathText.text = DeathMessage[Random.Range(0, DeathMessage.Length)];
+            DeathText.color = Color.white;
+        }
     }
 
 

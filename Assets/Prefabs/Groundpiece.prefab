@@ -97,12 +97,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stages:
-  - {fileID: 5435608014139152121, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
-  - {fileID: -4335991441621654067, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
-  - {fileID: 6729572152601682, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
-  - {fileID: -4626572278127738360, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
-  - {fileID: -258414757459904609, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
-  - {fileID: -8451753915077823089, guid: 6474f96400b13dc47a722dbc5e614fb3, type: 3}
+  - {fileID: 6409688343659422394, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: -8569283988996368023, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: -1863580348904871638, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 9195935987658030970, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 7457643256036125320, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 321644203677998589, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: -246732241968737827, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 8456288560922847764, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: -6009771556753538851, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 5393833859491106976, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 7209095955536302964, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 3130050660332972330, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 8669446346427437349, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 7214314689304536527, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: -6028391019774417213, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 697939435803306544, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: -3976917558240440054, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 2154544575185839407, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: -5312994072088782952, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
+  - {fileID: 6274950320890247480, guid: 50f46fe32481d2b4cbede9b8252d3b28, type: 3}
 --- !u!61 &936956911
 BoxCollider2D:
   m_ObjectHideFlags: 0
