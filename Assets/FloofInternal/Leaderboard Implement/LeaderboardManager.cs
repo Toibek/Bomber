@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using Firebase;
-using Firebase.Unity.Editor;
+//using Firebase.Unity.Editor;
 using Firebase.Database;
 using System.Linq;
 
@@ -68,7 +68,7 @@ public class LeaderboardManager : MonoBehaviour
     /// </summary>
     /// <param name="name"></param>
     public void AddLeaderboard(string name) 
-    { 
+    {
         if (Leaderboards.Count > 0)
             Leaderboards.Add(new LeaderboardGroup(name, Leaderboards[0]));
         else
@@ -435,7 +435,7 @@ public class LeaderboardGroup : object
     public void Init()
     {
         //setting default instance
-        FirebaseApp.DefaultInstance.SetEditorDatabaseUrl(LeaderboardManager.Instance.databaseUrl);
+        //FirebaseApp.DefaultInstance.SetEditorDatabaseUrl(LeaderboardManager.Instance.databaseUrl);
         //Get the user reference to keep everyones latest score
         userRef = FirebaseDatabase.DefaultInstance.GetReference(Application.productName + "/Users");
 
